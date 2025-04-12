@@ -1,0 +1,23 @@
+1. Home Page
+2. Route Page
+3. Station Page
+4. Login Page
+5. Register Page
+6. Profile Page
+7. Ticket Inspector Portal
+
+
+
+
+Backend
+---------------
+Authentication 
+    1. admin Authentication
+    2. user Authentication for frontend users 
+    3. Ticket Inspector 
+    
+Admin panel =====> Use adminite(bootstrap4)
+                    tailwindcss
+
+
+
