@@ -19,5 +19,18 @@ Authentication
 Admin panel =====> Use adminite(bootstrap4)
                     tailwindcss
 
+bootstrap4=>tailwind => https://github.vue.tailwind-prefix.cbass.dev/
+
+flashmessage=> When use the jsvalidation, use the flashmessage.
+
+toastify => from serverside
+
+
+=> color pattern => gradient color pattern 
+                linear-gradient(90deg,#3CACB6 0%, #8CCEAD 90%)
+               #1CBC9B               
+
+For Icon => flaticon.com/authors/super-basic-straight/gradient?author_id=1
+
 
 
