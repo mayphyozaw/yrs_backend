@@ -7,17 +7,23 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title')</title>
-    <!-- Font Poppins -->
+    <!-- Font Lato -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lato:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Toastr -->
     <link rel="stylesheet" href="{{ asset('plugins/toastr/toastr.min.css') }}">
+
+    <!-- Data Table -->
+    <link rel="stylesheet" href="{{ asset('plugins/datatables/datatables.css') }}">
+
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('css/adminlte.min.css') }}">
     <!-- overlayScrollbars -->
@@ -68,6 +74,10 @@
     <!-- Toastr -->
     <script src="{{ asset('plugins/toastr/toastr.min.js') }}"></script>
 
+    <!-- Data Table -->
+    <script src="{{ asset('plugins/datatables/datatables.min.js') }}"></script>
+
+
     <!-- AdminLTE App -->
     <script src="{{ asset('js/adminlte.js') }}"></script>
     <!-- Laravel JSValidation -->
@@ -75,15 +85,24 @@
 
     <script>
         $(document).ready(function() {
-            
+
+            $.ajaxSetup({
+                headers: {
+                    "X-CSRF-Token" : document.head.querySelector('meta[name="csrf-token"]').content
+                },
+                error:function(res, status, error){
+                    toastr.error(res.responseJSON.message);
+                },
+            });
+
             @if (session('success'))
                 toastr.success('{{ session('success') }}');
             @endif
 
             @if (session('error'))
-                toastr.error('{{ session('error') }}')
+                toastr.error('{{ session('error') }}');
             @endif
-            
+
         });
     </script>
 

@@ -1,0 +1,81 @@
+table.dataTable thead th{
+    font-size: 13px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    background: #f0fdfa;
+}
+
+table.dataTable tbody td{
+    font-size: 13px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+.dt-container .dt-length{
+    font-size: 14px;
+}
+
+.dt-container .dt-info{
+    font-size: 13px;
+}
+
+div.dt-container div.dt-search label {
+    font-size: 13px;
+    font-weight: normal;
+    white-space: nowrap;
+    text-align: left;
+    margin-bottom: 0;
+}
+
+
+@media screen and (max-width: 767px) {
+    div.dt-container div.dt-length, div.dt-container div.dt-search, div.dt-container div.dt-info, div.dt-container div.dt-paging {
+        text-align:unset;
+    }
+}
+
+div.dt-container div.dt-search input {
+    margin-left: 0.5em;
+    display: inline-block;
+    width: auto;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+}
+
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #1CBC9B;
+    border-color: #1CBC9B;
+}
+
+table.dataTable.dtr-column > tbody > tr > td.dtr-control:before, 
+table.dataTable.dtr-column > tbody > tr > th.dtr-control:before, 
+table.dataTable.dtr-column > tbody > tr > td.control:before, 
+table.dataTable.dtr-column > tbody > tr > th.control:before{
+    content:'+';
+    display: inline-block;
+    box-sizing: border-box;
+    background: #1CBC9B ;
+    border-radius: 100%;
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+    color: #ffff;
+    border:1px solid #ddd;
+}
+
+table.dataTable.dtr-column > tbody > tr.dtr-expanded td.dtr-control:before, 
+table.dataTable.dtr-column > tbody > tr.dtr-expanded th.dtr-control:before, 
+table.dataTable.dtr-column > tbody > tr.dtr-expanded td.control:before, 
+table.dataTable.dtr-column > tbody > tr.dtr-expanded th.control:before {
+    content:'-';
+    display: inline-block;
+    box-sizing: border-box;
+    background: red;
+    border-radius: 100%;
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+    color: #ffff;
+    border:1px solid #ddd;
+}

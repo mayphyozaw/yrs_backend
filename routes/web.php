@@ -1,20 +1,11 @@
 <?php
 
+use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
 require __DIR__ . '/auth.php';
 
@@ -29,4 +20,8 @@ Route::middleware('auth:admin_users')->group(function () {
 
 Route::middleware('auth:admin_users')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+
+    
+    Route::resource('admin-user',AdminUserController::class);
+    Route::get('admin-user-datable', [AdminUserController::class,'datatable'])->name('admin-user-datable');
 });
