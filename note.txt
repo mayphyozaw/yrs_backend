@@ -8,6 +8,11 @@
 
 
 
+Using Advance Laravel Design Pattern 
+===================================
+
+Controllers ----------> Repository ------------> Database
+
 
 Backend
 ---------------
