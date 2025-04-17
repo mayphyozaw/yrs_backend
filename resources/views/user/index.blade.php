@@ -1,15 +1,15 @@
 @extends('layouts.app')
-@section('title', 'Admin User')
-@section('admin-user-page-active', 'active')
+@section('title', 'User')
+@section('user-page-active', 'active')
 
 @section('header')
     <div class="tw-flex tw-justify-between tw-items-center">
         <div class="tw-flex tw-justify-between tw-items-center">
             <i class="fas fa-user tw-p-3 tw-bg-white tw-rounded-lg tw-shadow tw-mr-1"></i>
-            <h5 class="tw-text-lg mb-0">Admin User</h5>
+            <h5 class="tw-text-lg mb-0">User</h5>
         </div>
         <div>
-            <x-create-button href="{{ route('admin-user.create') }}">
+            <x-create-button href="{{ route('user.create') }}">
                 <i class="fas fa-plus-circle tw-mr-1"></i>
                 Create
             </x-create-button>
@@ -41,7 +41,7 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: "{{ route('admin-user-datable') }}",
+                    url: "{{ route('user-datable') }}",
                     data: function(d) {
 
                     }

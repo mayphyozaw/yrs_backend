@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -24,4 +25,7 @@ Route::middleware('auth:admin_users')->group(function () {
     
     Route::resource('admin-user',AdminUserController::class);
     Route::get('admin-user-datable', [AdminUserController::class,'datatable'])->name('admin-user-datable');
+
+    Route::resource('user',UserController::class);
+    Route::get('user-datable', [UserController::class,'datatable'])->name('user-datable');
 });
