@@ -88,9 +88,9 @@
 
             $.ajaxSetup({
                 headers: {
-                    "X-CSRF-Token" : document.head.querySelector('meta[name="csrf-token"]').content
+                    "X-CSRF-Token": document.head.querySelector('meta[name="csrf-token"]').content
                 },
-                error:function(res, status, error){
+                error: function(res, status, error) {
                     toastr.error(res.responseJSON.message);
                 },
             });

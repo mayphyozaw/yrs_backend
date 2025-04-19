@@ -6,6 +6,7 @@ use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Models\User;
 use App\Repositories\UserRepository;
+use App\Repositories\WalletRepository;
 use App\Services\ResponseService;
 use Exception;
 use Illuminate\Http\Request;
@@ -16,16 +17,18 @@ use Illuminate\Support\Facades\Redirect;
 
 class UserController extends Controller
 {
-    
-    protected $userRespository;
 
-    public function __construct(UserRepository $userRespository)
+    protected $userRespository;
+    protected $walletRepository;
+
+    public function __construct(UserRepository $userRespository, WalletRepository $walletRepository)
     {
         $this->userRespository = $userRespository;
+        $this->walletRepository = $walletRepository;
     }
-    
-    
-    
+
+
+
     public function index()
     {
         return view('user.index');
@@ -43,15 +46,27 @@ class UserController extends Controller
         return view('user.create');
     }
 
+
+
     public function store(UserStoreRequest $request)
     {
         try {
-            $this->userRespository->create([
+            $user = $this->userRespository->create([
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
             ]);
-            
+            $this->walletRepository->firstOrCreate(
+                [
+                    'user_id' => $user ->id,
+                ],
+
+                [
+                    'amount' => 0,
+                ],
+
+            );
+
             return Redirect::route('user.index')->with('success', 'Successfully created');
         } catch (Exception $e) {
             return back()->with('error', $e->getMessage());
@@ -67,12 +82,12 @@ class UserController extends Controller
     public function update($id, UserUpdateRequest $request)
     {
         try {
-            $this->userRespository->update($id,[
+            $this->userRespository->update($id, [
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => $request->password ? Hash::make($request) : $this->userRespository->find($id)->password,
             ]);
-            
+
             return Redirect::route('user.index')->with('success', 'Successfully updated');
         } catch (Exception $e) {
             return back()->with('error', $e->getMessage());
@@ -83,8 +98,8 @@ class UserController extends Controller
     {
         try {
             $this->userRespository->delete($id);
-            
-            
+
+
             return ResponseService::success([], 'Successfully deleted');
         } catch (Exception $e) {
             return ResponseService::fail($e->getMessage());
