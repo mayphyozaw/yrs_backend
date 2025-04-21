@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Wallet;
 use App\Repositories\Contracts\BaseRepository;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Yajra\DataTables\Facades\DataTables;
@@ -72,5 +73,28 @@ class WalletRepository implements BaseRepository
                 return null;
             })
             ->toJson();
+    }
+
+    public function addAmount($id, $amount)
+    {
+        $record = $this->model::lockForUpdate()->findOrFail($id); 
+        $record->increment('amount',$amount);
+        $record->update();
+
+        return $record;
+    }
+
+    public function reduceAmount($id, $amount)
+    {
+        $record = $this->model::lockForUpdate()->findOrFail($id); 
+
+        if($record->amount < $amount)
+        {
+            throw new Exception('Wallet is not enough.');
+        }
+        $record->decrement('amount',$amount);
+        $record->update();
+
+        return $record;
     }
 }

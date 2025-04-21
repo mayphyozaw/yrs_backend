@@ -54,7 +54,7 @@ class AdminUserController extends Controller
             
             return Redirect::route('admin-user.index')->with('success', 'Successfully created');
         } catch (Exception $e) {
-            return back()->with('error', $e->getMessage());
+            return back()->with('error', $e->getMessage())->withInput();
         }
     }
 
@@ -75,7 +75,7 @@ class AdminUserController extends Controller
             
             return Redirect::route('admin-user.index')->with('success', 'Successfully updated');
         } catch (Exception $e) {
-            return back()->with('error', $e->getMessage());
+            return back()->with('error', $e->getMessage())->withInput();
         }
     }
 

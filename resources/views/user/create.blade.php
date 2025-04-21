@@ -15,7 +15,7 @@
 @section('content')
     <x-card>
         
-        <form method="post" action="{{ route('user.store') }}" class="tw-mt-6 tw-space-y-6" id="submit-form">
+        <form method="post" action="{{ route('user.store') }}" class="tw-mt-6 tw-space-y-6 tw-text-sm" id="submit-form">
             @csrf
            
     
