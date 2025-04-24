@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\WalletTransaction;
 use App\Repositories\Contracts\BaseRepository;
@@ -19,7 +20,7 @@ class WalletTransactionRepository implements BaseRepository
 
     public function find($id)
     {
-        $record = $this->model::find($id);
+        $record = $this->model::with(['user:id,name,email', 'sourceable'])->find($id);
         return $record;
     }
 
@@ -29,36 +30,46 @@ class WalletTransactionRepository implements BaseRepository
         return $record;
     }
 
-    public function update($id, array $data)
-    {
-       
-    }
+    public function update($id, array $data) {}
 
-    public function delete($id)
-    {
-        
-    }
+    public function delete($id) {}
 
     public function datatable(Request $request)
     {
-        $model = WalletTransaction::query();
+        $model = WalletTransaction::with(['user:id,name,email']);
 
         return DataTables::eloquent($model)
-            ->addColumn('user_name', function ($wallet) {
-                return ($wallet ->user->name ?? '-') . '('.($wallet ->user->email ?? '') .')';
+            ->filterColumn('user_name', function ($query, $keyword) {
+                $query->whereHas('user', function($q1) use ($keyword){
+                    $q1->where('name', 'LIKE', "%$keyword%")->orWhere('email','LIKE',"%$keyword%");
+                });
             })
-            ->editColumn('amount', function ($wallet) {
-                return number_format($wallet->amount);
+            ->addColumn('user_name', function ($wallet_transaction) {
+                return ($wallet_transaction->user->name ?? '-') . '(' . ($wallet_transaction->user->email ?? '') . ')';
             })
-            ->editColumn('created_at', function ($wallet) {
-                return Carbon::parse($wallet->created_at)->format("Y-m-d H:i:s");
+            ->editColumn('method', function ($wallet_transaction) {
+                // return $wallet_transaction->acsrMethod['text'];
+                return '<span style="color: #' . $wallet_transaction->acsrMethod['color'] . '">' . $wallet_transaction->acsrMethod['text'] . '</span>';
             })
-            ->editColumn('updated_at', function ($wallet) {
-                return Carbon::parse($wallet->updated_at)->format("Y-m-d H:i:s");
+            ->editColumn('type', function ($wallet_transaction) {
+                return '<span style="color: #' . $wallet_transaction->acsrType['color'] . '">' . $wallet_transaction->acsrType['text'] . '</span>';
             })
-            ->addColumn('responsive-icon', function ($wallet) {
+            ->editColumn('amount', function ($wallet_transaction) {
+                return number_format($wallet_transaction->amount);
+            })
+            ->editColumn('created_at', function ($wallet_transaction) {
+                return Carbon::parse($wallet_transaction->created_at)->format("Y-m-d H:i:s");
+            })
+            ->editColumn('updated_at', function ($wallet_transaction) {
+                return Carbon::parse($wallet_transaction->updated_at)->format("Y-m-d H:i:s");
+            })
+            ->addColumn('action', function ($wallet_transaction) {
+                return view('wallet-transaction._action', compact('wallet_transaction'));
+            })
+            ->addColumn('responsive-icon', function ($wallet_transaction) {
                 return null;
             })
+            ->rawColumns(['method', 'type'])
             ->toJson();
     }
 }

@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Dashboard')
+@section('dashboard-page-active', 'active')
 
 @section('header')
     <div class="tw-flex tw-justify-between tw-items-center">

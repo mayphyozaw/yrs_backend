@@ -44,7 +44,7 @@ class WalletController extends Controller
     {
         DB::beginTransaction();
         try {
-            throw new Exception ('hello');
+            // throw new Exception ('hello');
             WalletService::addAmount([
                 'wallet_id' => $request->wallet_id,
                 'sourceable_id'=>null,

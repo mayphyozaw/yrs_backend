@@ -11,6 +11,7 @@ export default {
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
         './app/Http/Controllers/**/*.php',
+        './app/Repositories/**/*.php',
         './app/Models/**/*.php',
         
     ],

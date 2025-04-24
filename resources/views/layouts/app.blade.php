@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title')</title>
+    <title>@yield('title') - YRS</title>
+    <link rel="shortcut icon" href="{{asset('image/logo.png')}}" type="image/x-icon">
     <!-- Font Lato -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,6 +27,9 @@
 
     <!-- Select 2 -->
     <link rel="stylesheet" href="{{ asset('plugins/select2/css/select2.min.css') }}">
+    
+    <link rel="stylesheet" href="{{asset('plugins/viewer/viewer.css')}}">
+    {{-- <link rel="stylesheet" href="{{asset('plugins/viewer/viewer.min.css')}}"> --}}
 
 
     <!-- Theme style -->
@@ -84,7 +88,11 @@
     <!-- Select2 -->
     <script src="{{ asset('plugins/select2/js/select2.min.js') }}"></script>
 
-
+    <script src="{{ asset('plugins/viewer/viewer.js') }}"></script>
+    {{-- <script src="{{ asset('plugins/viewer/viewer.min.js') }}"></script> --}}
+    {{-- <script src="{{ asset('plugins/viewer/viewer.common.js') }}"></script> --}}
+    {{-- <script src="{{ asset('plugins/viewer/viewer.esm.js') }}"></script> --}}
+    
 
     <!-- AdminLTE App -->
     <script src="{{ asset('js/adminlte.js') }}"></script>

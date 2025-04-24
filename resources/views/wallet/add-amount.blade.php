@@ -71,7 +71,7 @@
                     processResults: function(response) {
                         console.log(response);
                         return {
-                            results: $.map(response.data, function(item){
+                            results: $.map(response.data, function(item){ // using javascript map function
                                 return {
                                     id: item.id,
                                     text: item.user.name

@@ -11,17 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('wallet_transactions', function (Blueprint $table) {
+        Schema::create('top_up_histories', function (Blueprint $table) {
             $table->id();
             $table->string('trx_id')->unique('trx_id_unique');
             $table->bigInteger('wallet_id');
             $table->bigInteger('user_id');
-            $table->bigInteger('sourceable_id')->nullable();
-            $table->string('sourceable_type')->nullable();
-            $table->enum('method',['add','reduce']);
-            $table->enum('type',['manual','top_up', 'buy_ticket']);
             $table->integer('amount');
             $table->text('description')->nullable();
+            $table->string('image')->nullable();
+            $table->enum('status',['pending','approve','reject']);
+            $table->timestamp('approved_at')->nullable();
+            $table->timestamp('rejected_at')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('wallet_transactions');
+        Schema::dropIfExists('top_up_histories');
     }
 };

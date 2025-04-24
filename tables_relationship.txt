@@ -1,0 +1,21 @@
+1. admin-users TABLE [id, name, email]
+2. ticket-inspectors TABLE [id, name, email]
+
+
+3. users TABLE [id, name, email] ======= user_id <=> id
+4. wallets TABLE [id, user_id, amount] => wallet_id <=>id
+
+5. wallet-transactions TABLE [id, trx_id, wallet_id, user_id, sourceable_id, sourceable_type, type, method, amount, description]
+
+wallet_id, user_id => belognsTo
+sourceable_id => polymophism using -> one to One => morphTo() from laravel documentaion
+
+
+mutator & accessor => from laravel documentaion
+mutator => set method
+accessor => get method 
+
+add and reduce for text color => using accessor 
+
+
+6. topup_history TABLE [id, trx_id, wallet_id, user_id, amount, description, image, status, approved_at, rejected_at]
