@@ -42,7 +42,7 @@ class AdminUserRepository implements BaseRepository
         $record->delete();
     }
 
-
+    
     public function datatable(Request $request)
     {
         $model = AdminUser::query();

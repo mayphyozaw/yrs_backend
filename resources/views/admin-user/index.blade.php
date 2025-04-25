@@ -109,7 +109,9 @@
                 event.preventDefault();
 
                 var delete_url = $(this).data('delete-url');
-                deleteDialog.fire().then((result) => {
+                confirmDialog.fire({
+                    title: "Are you sure you want to delete?",
+                }).then((result) => {
                     
                     if (result.isConfirmed) {
                         $.ajax({

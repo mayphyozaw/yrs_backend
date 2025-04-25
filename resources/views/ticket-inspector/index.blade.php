@@ -108,12 +108,14 @@
             $(document).on('click', '.delete-button', function(event) {
                 event.preventDefault();
 
-                var delete_url = $(this).data('delete-url');
-                deleteDialog.fire().then((result) => {
+                var url = $(this).data('url');
+                confirmDialog.fire({
+                    title:"Are you sure you want to delete?",
+                }).then((result) => {
                     
                     if (result.isConfirmed) {
                         $.ajax({
-                            url: delete_url,
+                            url: url,
                             method: 'DELETE',
                             success: function(response){
                                 table.ajax.reload();

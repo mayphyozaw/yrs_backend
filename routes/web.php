@@ -45,7 +45,8 @@ Route::middleware('auth:admin_users', 'verified')->group(function () {
 
     Route::resource('top-up-history', TopUpHistoryController::class)->only('index','show');
     Route::get('top-up-history-datable', [TopUpHistoryController::class, 'datatable'])->name('top-up-history-datable');
-
+    Route::post('top-up-history-approve/{id}',[TopUpHistoryController::class,'approve'])->name('top-up-history-approve');
+    Route::post('top-up-history-reject/{id}',[TopUpHistoryController::class,'reject'])->name('top-up-history-reject');
 
     Route::resource('ticket-inspector', TicketInspectorController::class);
     Route::get('ticket-inspector-datable', [TicketInspectorController::class, 'datatable'])->name('ticket-inspector-datable');

@@ -8,6 +8,8 @@ use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Carbon;
 
 use App\Repositories\Contracts\BaseRepository;
+use App\Services\WalletService;
+use Exception;
 
 class TopUpHistoryRepository implements BaseRepository
 {
@@ -39,6 +41,7 @@ class TopUpHistoryRepository implements BaseRepository
     }
     public function delete($id) {}
 
+    
 
     public function datatable(Request $request)
     {
@@ -77,4 +80,45 @@ class TopUpHistoryRepository implements BaseRepository
             ->rawColumns(['image', 'status'])
             ->toJson();
     }
+
+    public function approve($id)
+    {
+        
+        $record = $this->model::lockForUpdate()->find($id); 
+
+        if($record->status != 'pending'){
+            throw new Exception('Unable to approve.');
+        }
+        $record->update([
+            'status' => 'approve',
+            'approved_at' => date('Y-m-d H:i:s')
+        ]);
+
+        WalletService::addAmount([
+            'wallet_id' => $record->wallet_id,
+            'sourceable_id'=>$record->id,
+            'sourceable_type' => TopUpHistory::class,
+            'type' => 'top_up',
+            'amount' => $record->amount,
+            'description'=>'From Top Up History (#' .$record->trx_id. ')'
+
+        ]);
+
+        return $record;
+    }
+
+    public function reject($id)
+    {
+        $record = $this->model::lockForUpdate()->find($id); 
+
+        if($record->status != 'pending'){
+            throw new Exception('Unable to reject.');
+        }
+        $record->update([
+            'status' => 'reject',
+            'rejected_at' => date('Y-m-d H:i:s')
+        ]);
+        return $record;
+    }
+
 }
