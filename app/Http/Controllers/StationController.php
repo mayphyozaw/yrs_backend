@@ -89,6 +89,12 @@ class StationController extends Controller
         }
     }
 
+    public function show($id)
+    {
+        $station = $this->stationRespository->find($id);
+        return view('station.show', compact('station'));
+    }
+
     public function destroy($id)
     {
         try {

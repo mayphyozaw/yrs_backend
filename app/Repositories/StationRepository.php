@@ -7,6 +7,8 @@ use App\Repositories\Contracts\BaseRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Str;
+
 
 class StationRepository implements BaseRepository
 {
@@ -48,6 +50,9 @@ class StationRepository implements BaseRepository
         $model = Station::query();
 
         return DataTables::eloquent($model)
+            ->editColumn('description', function ($station) {
+                return Str::limit($station->description,50);
+            })
             ->editColumn('created_at', function ($station) {
                 return Carbon::parse($station->created_at)->format("Y-m-d H:i:s");
             })

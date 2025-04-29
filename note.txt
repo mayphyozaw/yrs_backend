@@ -48,6 +48,7 @@ way 3 => maptiler =>
 each map has the most important thing that is the layer 
 
 for latitude and logitude point => leaftlet location picker 
+
 from => https://github.com/stefanocudini/leaflet-locationpicker/tree/master/src
 
 layer -> OSM -> OSM means open street map
