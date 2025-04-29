@@ -1,0 +1,90 @@
+1. admin-users TABLE [id, name, email] 
+        id                  -> bitint
+        name                -> varchar
+        email               -> varchar
+
+2. ticket-inspectors TABLE [id, name, email]
+        id                  -> bitint
+        name                -> varchar
+        email               -> varchar
+
+
+...................................................................................
+
+3. users TABLE [id, name, email] ======= user_id <=> id
+        id                  -> bitint
+        name                -> varchar
+        email               -> varchar
+
+4. wallets TABLE [id, user_id, amount] => wallet_id <=>id
+        id                    -> bitint
+        user_id               -> bitint
+        amount                -> bitint
+
+
+5. wallet-transactions TABLE [id, trx_id, wallet_id, user_id, sourceable_id, sourceable_type, type, method, amount, description]
+        id                    -> bitint
+        trx_id                -> bitint
+        wallet_id             -> bitint
+        user_id               -> bitint
+        sourceable_id         -> bitint
+        sourceable_type       -> varchar
+        type                  -> enum
+        method                -> enum
+        amount                -> bitint
+        description           -> text
+
+
+
+wallet_id, user_id => belognsTo
+sourceable_id => polymophism using -> one to One => morphTo() from laravel documentaion
+
+
+mutator & accessor => from laravel documentaion
+mutator => set method
+accessor => get method 
+
+add and reduce for text color => using accessor 
+
+
+6. topup_history TABLE [id, trx_id, wallet_id, user_id, amount, description, image, status, approved_at, rejected_at]
+        id                    -> bitint
+        trx_id                -> bitint
+        wallet_id             -> bitint
+        user_id               -> bitint
+        amount                -> bitint
+        description           -> text
+        image                 -> bitint
+        status                -> enum
+        approved_at           -> timestamp
+        rejected_at           -> timestamp
+
+...................................................................................
+
+
+7. stations TABLE [id, title, description, latitude, logitude]
+        id                    -> bitint
+        slug                  -> varchar
+        title                 -> varchar
+        description           -> text
+        latitude              -> varchar
+        logitude              -> varchar
+
+
+8. routes TABLE [id, title, description, direction]
+        id                    -> bitint
+        slug                  -> varchar
+        title                 -> varchar
+        description           -> text
+        direction             -> enum
+
+
+9. route_stations TABLE [id, route_id, station_id, time]
+        id                    -> bitint
+        slug                  -> varchar
+        route_id              -> bitint
+        station_id            -> bitint
+        time                  -> time
+
+
+...................................................................................

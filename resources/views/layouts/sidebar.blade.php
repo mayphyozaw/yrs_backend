@@ -62,6 +62,15 @@
                     </a>
                 </li>
 
+                <li class="nav-item">
+                    <a href="{{ route('station.index') }}" class="nav-link @yield('station-page-active') tw-text-sm justify-start"> 
+                        <i class="nav-icon fas fa-subway"></i>
+                        <p>
+                            Station
+                        </p>
+                    </a>
+                </li>
+
                 
 
                 <li class="nav-item">

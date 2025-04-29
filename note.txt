@@ -37,5 +37,17 @@ toastify => from serverside
 
 For Icon => flaticon.com/authors/super-basic-straight/gradient?author_id=1
 
+way 1 => using leafletjs.com for route-station
+openstreetmap
+
+way 2 => mapbox => just like the google map but fee with credit card
+
+way 3 => maptiler => 
 
 
+each map has the most important thing that is the layer 
+
+for latitude and logitude point => leaftlet location picker 
+from => https://github.com/stefanocudini/leaflet-locationpicker/tree/master/src
+
+layer -> OSM -> OSM means open street map

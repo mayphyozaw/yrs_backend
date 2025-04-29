@@ -28,8 +28,14 @@
     <!-- Select 2 -->
     <link rel="stylesheet" href="{{ asset('plugins/select2/css/select2.min.css') }}">
     
+    {{-- Viewer --}}
     <link rel="stylesheet" href="{{asset('plugins/viewer/viewer.css')}}">
-    {{-- <link rel="stylesheet" href="{{asset('plugins/viewer/viewer.min.css')}}"> --}}
+
+    {{-- leaflet --}}
+    <link rel="stylesheet" href="{{asset('plugins/leaflet/leaflet.css')}}">
+
+    {{-- leaflet loction picker--}}
+    <link rel="stylesheet" href="{{asset('plugins/leaflet-locationpicker/leaflet-locationpicker.css')}}">
 
 
     <!-- Theme style -->
@@ -88,11 +94,17 @@
     <!-- Select2 -->
     <script src="{{ asset('plugins/select2/js/select2.min.js') }}"></script>
 
+    {{-- Viewer --}}
     <script src="{{ asset('plugins/viewer/viewer.js') }}"></script>
     {{-- <script src="{{ asset('plugins/viewer/viewer.min.js') }}"></script> --}}
     {{-- <script src="{{ asset('plugins/viewer/viewer.common.js') }}"></script> --}}
     {{-- <script src="{{ asset('plugins/viewer/viewer.esm.js') }}"></script> --}}
     
+    {{-- leaflet  --}}
+    <script src="{{ asset('plugins/leaflet/leaflet.js') }}"></script>
+
+    {{-- leaflet location picker  --}}
+    <script src="{{ asset('plugins/leaflet-locationpicker/leaflet-locationpicker.js') }}"></script>
 
     <!-- AdminLTE App -->
     <script src="{{ asset('js/adminlte.js') }}"></script>
