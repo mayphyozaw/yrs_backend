@@ -46,6 +46,8 @@
     <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
 
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+    @yield('style')
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -63,7 +65,7 @@
 
                 </div>
             </div>
-            <section class="content">
+            <section class="content tw-pb-5">
                 <div class="container-fluid">
                     @yield('content')
                 </div>
@@ -105,6 +107,10 @@
 
     {{-- leaflet location picker  --}}
     <script src="{{ asset('plugins/leaflet-locationpicker/leaflet-locationpicker.js') }}"></script>
+
+
+    {{-- Repeater  --}}
+    <script src="{{ asset('plugins/repeater/jquery.repeater.js') }}"></script>
 
     <!-- AdminLTE App -->
     <script src="{{ asset('js/adminlte.js') }}"></script>

@@ -71,6 +71,16 @@
                     </a>
                 </li>
 
+
+                <li class="nav-item">
+                    <a href="{{ route('route.index') }}" class="nav-link @yield('route-page-active') tw-text-sm justify-start"> 
+                        <i class="nav-icon fas fa-route"></i>
+                        <p>
+                            Route
+                        </p>
+                    </a>
+                </li>
+
                 
 
                 <li class="nav-item">

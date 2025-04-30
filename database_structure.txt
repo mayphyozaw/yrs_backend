@@ -76,12 +76,11 @@ add and reduce for text color => using accessor
         slug                  -> varchar
         title                 -> varchar
         description           -> text
-        direction             -> enum
+        direction             -> enum (clockwise, anticlockwise)
 
 
 9. route_stations TABLE [id, route_id, station_id, time]
         id                    -> bitint
-        slug                  -> varchar
         route_id              -> bitint
         station_id            -> bitint
         time                  -> time

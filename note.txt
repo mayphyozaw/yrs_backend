@@ -52,3 +52,14 @@ for latitude and logitude point => leaftlet location picker
 from => https://github.com/stefanocudini/leaflet-locationpicker/tree/master/src
 
 layer -> OSM -> OSM means open street map
+
+
+
+using jquery repeater for route (clockwise and anticlockwise)
+
+from laravel documentation, 
+
+in pivotTable=> mapWithKeys() and sync() using
+
+
+to add the marker icon => route=>show.blade.php => from leaflet documentation
