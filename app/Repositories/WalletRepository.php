@@ -54,7 +54,7 @@ class WalletRepository implements BaseRepository
 
     public function datatable(Request $request)
     {
-        $model = Wallet::query();
+        $model = $this->model::query();
 
         return DataTables::eloquent($model)
             ->addColumn('user_name', function ($wallet) {

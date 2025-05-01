@@ -47,7 +47,7 @@ class TicketPricingRepository implements BaseRepository
 
     public function datatable(Request $request)
     {
-        $model = TicketPricing::query();
+        $model = $this->model::query();
 
         return DataTables::eloquent($model)
             ->editColumn('type', function ($ticket_pricing) {

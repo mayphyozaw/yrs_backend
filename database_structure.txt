@@ -90,9 +90,29 @@ add and reduce for text color => using accessor
 
 10. ticket_pricings TABLE [id, type, price,  offer_quantity, remain_quantity, started_at, ended_at]
         id                    -> bitint
-        type                  -> enum [1-time ticket, 1-month ticket]
+        type                  -> enum [one-time ticket, one-month ticket]
         price                 ->  int
         offer_quantity        -> int
         remain_quantity       -> int
         started_at            -> timestamp
         ended_at              -> timestamp
+
+.........................................................................................
+
+11. tickets TABLE [id, ticket_number, user_id, ticket_pricing_id, price, type, direction, valid_at, expire_at]
+        id                    -> bitint
+        ticket_number         -> varchar
+        user_id               ->  int
+        ticket_pricing_id     -> int
+        price                 -> int
+        type                  -> enum [one-time ticket, one-month ticket]
+        direction             -> enum (clockwise, anticlockwise)
+        valid_at              -> timestamp
+        expire_at             -> timestamp
+
+
+one_time_ticket => direction => clockwise or anticlockwise 
+ for example => insein to Yango means that anticlockwise
+ for example => kyeemyintaing to yango => clockwise
+
+ one_month_ticket => clockwise and anticlockwise => both

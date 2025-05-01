@@ -36,7 +36,7 @@ class WalletTransactionRepository implements BaseRepository
 
     public function datatable(Request $request)
     {
-        $model = WalletTransaction::with(['user:id,name,email']);
+        $model = $this->model::with(['user:id,name,email']);
 
         return DataTables::eloquent($model)
             ->filterColumn('user_name', function ($query, $keyword) {

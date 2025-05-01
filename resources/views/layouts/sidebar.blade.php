@@ -91,6 +91,15 @@
                     </a>
                 </li>
 
+                <li class="nav-item">
+                    <a href="{{ route('ticket.index') }}" class="nav-link @yield('ticket-page-active') tw-text-sm justify-start"> 
+                        <i class="nav-icon fas fa-ticket-alt"></i>
+                        <p>
+                            Ticket
+                        </p>
+                    </a>
+                </li>
+
                 
 
                 <li class="nav-item">

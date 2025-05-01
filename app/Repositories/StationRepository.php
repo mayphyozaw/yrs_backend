@@ -47,7 +47,7 @@ class StationRepository implements BaseRepository
 
     public function datatable(Request $request)
     {
-        $model = Station::query();
+        $model = $this->model::query();
 
         return DataTables::eloquent($model)
             ->editColumn('description', function ($station) {

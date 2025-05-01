@@ -48,7 +48,7 @@ class RouteRepository implements BaseRepository
 
     public function datatable(Request $request)
     {
-        $model = Route::query();
+        $model = $this->model::query();
 
         return DataTables::eloquent($model)
             ->editColumn('description', function ($route) {

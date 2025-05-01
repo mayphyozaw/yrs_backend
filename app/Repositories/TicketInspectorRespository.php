@@ -45,7 +45,7 @@ class TicketInspectorRespository implements BaseRepository
 
     public function datatable(Request $request)
     {
-        $model = TicketInspector::query();
+        $model = $this->model::query();
 
         return DataTables::eloquent($model)
             ->editColumn('email_verified_at', function ($ticket_inspector) {

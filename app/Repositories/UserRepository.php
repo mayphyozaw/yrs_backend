@@ -45,7 +45,7 @@ class UserRepository implements BaseRepository
 
     public function datatable(Request $request)
     {
-        $model = User::query();
+        $model = $this->model::query();
 
         return DataTables::eloquent($model)
             ->editColumn('email_verified_at', function ($user) {
