@@ -87,3 +87,12 @@ add and reduce for text color => using accessor
 
 
 ...................................................................................
+
+10. ticket_pricings TABLE [id, type, price,  offer_quantity, remain_quantity, started_at, ended_at]
+        id                    -> bitint
+        type                  -> enum [1-time ticket, 1-month ticket]
+        price                 ->  int
+        offer_quantity        -> int
+        remain_quantity       -> int
+        started_at            -> timestamp
+        ended_at              -> timestamp

@@ -81,6 +81,16 @@
                     </a>
                 </li>
 
+
+                <li class="nav-item">
+                    <a href="{{ route('ticket-pricing.index') }}" class="nav-link @yield('ticket-pricing-page-active') tw-text-sm justify-start"> 
+                        <i class="nav-icon fas fa-tag"></i>
+                        <p>
+                            Ticket Pricing
+                        </p>
+                    </a>
+                </li>
+
                 
 
                 <li class="nav-item">
