@@ -22,6 +22,7 @@
         <table class="table table-bordered Datatable-tb">
             <thead>
                 <th class="text-center"></th>
+                <th class="text-center">#</th>
                 <th class="text-center">Title</th>
                 <th class="text-center">Description</th>
                 <th class="text-center">Created at</th>
@@ -48,6 +49,10 @@
 
                 columns: [{
                         data: 'responsive-icon',
+                        class: 'text-center'
+                    },
+                    {
+                        data: 'id',
                         class: 'text-center'
                     },
                     {

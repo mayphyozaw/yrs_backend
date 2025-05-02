@@ -54,11 +54,16 @@ class WalletRepository implements BaseRepository
 
     public function datatable(Request $request)
     {
-        $model = $this->model::query();
+        $model = $this->model::with(['user:id,name,email']);
 
         return DataTables::eloquent($model)
+            ->filterColumn('user_name', function ($query, $keyword) {
+                $query->whereHas('user', function ($q1) use ($keyword) {
+                    $q1->where('name', 'LIKE', "%$keyword%")->orWhere('email', 'LIKE', "%$keyword%");
+                });
+            })
             ->addColumn('user_name', function ($wallet) {
-                return ($wallet ->user->name ?? '-') . '('.($wallet ->user->email ?? '') .')';
+                return ($wallet->user->name ?? '-') . '(' . ($wallet->user->email ?? '') . ')';
             })
             ->editColumn('amount', function ($wallet) {
                 return number_format($wallet->amount);
@@ -77,8 +82,8 @@ class WalletRepository implements BaseRepository
 
     public function addAmount($id, $amount)
     {
-        $record = $this->model::lockForUpdate()->findOrFail($id); 
-        $record->increment('amount',$amount);
+        $record = $this->model::lockForUpdate()->findOrFail($id);
+        $record->increment('amount', $amount);
         $record->update();
 
         return $record;
@@ -86,13 +91,12 @@ class WalletRepository implements BaseRepository
 
     public function reduceAmount($id, $amount)
     {
-        $record = $this->model::lockForUpdate()->findOrFail($id); 
+        $record = $this->model::lockForUpdate()->findOrFail($id);
 
-        if($record->amount < $amount)
-        {
+        if ($record->amount < $amount) {
             throw new Exception('Wallet is not enough.');
         }
-        $record->decrement('amount',$amount);
+        $record->decrement('amount', $amount);
         $record->update();
 
         return $record;

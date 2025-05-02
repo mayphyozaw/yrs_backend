@@ -1,0 +1,8 @@
+APIs
+From documentation, 
+We need Token, for auth Laravel, using the Laravel Passport Package in the past.
+
+1. for Token => Laravel Passport and Laravel Sanctum Package 
+
+Laravel Passport => API Token only
+Laravel Sanctum => without OAuth with default in composer.json

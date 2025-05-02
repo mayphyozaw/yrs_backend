@@ -53,6 +53,9 @@ class TicketPricingRepository implements BaseRepository
             ->editColumn('type', function ($ticket_pricing) {
                 return '<span style="color: #' . $ticket_pricing->acsrType['color'] . '">' . $ticket_pricing->acsrType['text'] . '</span>';
             })
+            ->editColumn('direction', function ($ticket_pricing) {
+                return '<span style="color: #' . $ticket_pricing->acsrDirection['color'] . '">' . $ticket_pricing->acsrDirection['text'] . '</span>';
+            })
             ->editColumn('price', function ($ticket_pricing) {
                 return number_format($ticket_pricing->price);
             })
@@ -68,19 +71,14 @@ class TicketPricingRepository implements BaseRepository
             ->editColumn('ended_at', function ($ticket_pricing) {
                 return Carbon::parse($ticket_pricing->updated_at)->format("Y-m-d H:i:s");
             })
-            ->editColumn('created_at', function ($ticket_pricing) {
-                return Carbon::parse($ticket_pricing->created_at)->format("Y-m-d H:i:s");
-            })
-            ->editColumn('updated_at', function ($ticket_pricing) {
-                return Carbon::parse($ticket_pricing->updated_at)->format("Y-m-d H:i:s");
-            })
+           
             ->addColumn('action', function ($ticket_pricing) {
                 return view('ticket-pricing._action', compact('ticket_pricing'));
             })
             ->addColumn('responsive-icon', function ($ticket_pricing) {
                 return null;
             })
-            ->rawColumns(['type','action'])
+            ->rawColumns(['type','direction','action'])
             ->toJson();
     }
 }

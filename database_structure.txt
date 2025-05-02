@@ -88,9 +88,10 @@ add and reduce for text color => using accessor
 
 ...................................................................................
 
-10. ticket_pricings TABLE [id, type, price,  offer_quantity, remain_quantity, started_at, ended_at]
+10. ticket_pricings TABLE [id, type, price, direction,  offer_quantity, remain_quantity, started_at, ended_at]
         id                    -> bitint
         type                  -> enum [one-time ticket, one-month ticket]
+        direction             ->
         price                 ->  int
         offer_quantity        -> int
         remain_quantity       -> int
@@ -106,7 +107,7 @@ add and reduce for text color => using accessor
         ticket_pricing_id     -> int
         price                 -> int
         type                  -> enum [one-time ticket, one-month ticket]
-        direction             -> enum (clockwise, anticlockwise)
+        direction             -> enum (clockwise, anticlockwise,both)
         valid_at              -> timestamp
         expire_at             -> timestamp
 

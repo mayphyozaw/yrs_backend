@@ -48,9 +48,14 @@ class TicketRepository implements BaseRepository
 
     public function datatable(Request $request)
     {
-        $model = $this->model::query();
+        $model = $this->model::with(['user:id, name, email']);
 
         return DataTables::eloquent($model)
+            ->filterColumn('user_name', function ($query, $keyword) {
+                $query->whereHas('user', function ($q1) use ($keyword) {
+                    $q1->where('name', 'LIKE', "%$keyword%")->orWhere('email', 'LIKE', "%$keyword%");
+                });
+            })
             ->addColumn('user_name', function ($ticket) {
                 return $ticket->user ? ($ticket->user->name . '(' . $ticket->user->email . ')') : '';
             })
@@ -72,11 +77,11 @@ class TicketRepository implements BaseRepository
             ->addColumn('action', function ($ticket) {
                 return view('ticket._action', compact('ticket'));
             })
-            
+
             ->addColumn('responsive-icon', function ($ticket) {
                 return null;
             })
-            ->rawColumns(['type','direction','action'])
+            ->rawColumns(['type', 'direction', 'action'])
             ->toJson();
     }
 }

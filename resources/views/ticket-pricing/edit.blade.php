@@ -22,11 +22,21 @@
 
             <div class="form-group">
                 <x-input-label for="" value="Type" />
-                <select name="type" class="custom-select">
+                <select name="type" class="custom-select type">
                     <option value="one_time_ticket" @if (old('type', $ticket_pricing->type) == 'one_time_ticket') selected @endif>One Time Ticket
                     </option>
                     <option value="one_month_ticket" @if (old('type', $ticket_pricing->type) == 'one_month_ticket') selected @endif>One Month Ticket
                     </option>
+
+                </select>
+            </div>
+
+            <div class="form-group direction-component">
+                <x-input-label for="" value="Direction" />
+                <select name="direction" class="custom-select">
+                    <option value="clockwise" @if (old('direction', $ticket_pricing->direction) == 'clockwise')selected  @endif>Clockwise</option>
+                    <option value="anticlockwise" @if (old('direction', $ticket_pricing->direction) == 'anticlockwise')selected  @endif>Anticlockwise</option>
+                    <option value="both" @if (old('direction', $ticket_pricing->direction) == 'both')selected  @endif>Both </option>
 
                 </select>
             </div>
@@ -62,6 +72,11 @@
 
     <script>
         $(document).ready(function() {
+
+            $(document).on('change','.type', function(){
+                changeType();
+            });
+            
             $('.datetimepicker').daterangepicker({
                 "drops": "up",
                 "timePicker": true,
@@ -73,6 +88,19 @@
 
                 },
             });
+
+            changeType();
+            function changeType(){
+                let type = $('.type').val();
+                if(type == 'one_time_ticket')
+                {
+                    $('.direction-component').show();
+                }else if(type == 'one_month_ticket')
+                {
+                    $('.direction-component').hide();
+
+                }
+            }
         });
     </script>
 @endpush

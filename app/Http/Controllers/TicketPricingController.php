@@ -49,6 +49,7 @@ class TicketPricingController extends Controller
             $period = explode(' - ', $request->period);
             $this->ticketPricingRepository->create([
                 'type' => $request->type,
+                'direction' => $request->type == 'one_time_ticket' ? $request->direction : 'both', 
                 'price' => $request->price,
                 'offer_quantity' => $request->offer_quantity,
                 'remain_quantity' => $request->offer_quantity,
@@ -84,6 +85,7 @@ class TicketPricingController extends Controller
             $period = explode(' - ', $request->period);
             $this->ticketPricingRepository->update($id, [
                 'type' => $request->type,
+                'direction' => $request->type == 'one_time_ticket' ? $request->direction : 'both', 
                 'price' => $request->price,
                 'offer_quantity' => $new_offer_quantity,
                 'remain_quantity' => $new_remain_quantity,

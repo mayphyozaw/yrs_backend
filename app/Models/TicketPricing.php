@@ -16,6 +16,7 @@ class TicketPricing extends Model
      */
     protected $fillable = [
         'type',
+        'direction',
         'price',
         'offer_quantity',
         'remain_quantity',
@@ -48,6 +49,40 @@ class TicketPricing extends Model
                 ];
             },
             
+        );
+    }
+
+    protected function acsrDirection(): Attribute
+    {
+        return Attribute::make(
+            get: function (mixed $value, array $attributes) {
+                switch ($attributes['direction']) {
+                    case 'clockwise':
+                        $text = 'Clockwise';
+                        $color = '16a34a';
+                        break;
+
+                    case 'anticlockwise':
+                        $text = 'Anticlockwise';
+                        $color = '2563eb';
+                        break;
+
+                    case 'both':
+                        $text = 'Both';
+                        $color = 'ea580c';
+                        break;
+
+                    default:
+                        $text = '';
+                        $color = '4b45563';
+                        break;
+                }
+                return [
+                    'text' => $text,
+                    'color' => $color
+                ];
+            },
+
         );
     }
 

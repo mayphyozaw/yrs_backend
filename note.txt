@@ -63,3 +63,12 @@ in pivotTable=> mapWithKeys() and sync() using
 
 
 to add the marker icon => route=>show.blade.php => from leaflet documentation
+
+recheck the Backend
+
+1. checking the query in  Repository whether relationships with other tables or not.
+    if there is the relationship with the other tables, change the query to eager loading 
+
+    in TicketRepository => change the query to with 
+        $model = $this->model::query();
+

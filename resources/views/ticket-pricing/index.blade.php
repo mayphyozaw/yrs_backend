@@ -22,14 +22,14 @@
         <table class="table table-bordered Datatable-tb">
             <thead>
                 <th class="text-center"></th>
+                <th class="text-center">#</th>
                 <th class="text-center">Type</th>
+                <th class="text-center">Direction</th>
                 <th class="text-center">Price (MMK)</th>
                 <th class="text-center">Offer Quantity</th>
                 <th class="text-center">Remain Quantity </th>
                 <th class="text-center">Started at</th>
                 <th class="text-center">Ended at </th>
-                <th class="text-center">Created at</th>
-                <th class="text-center">Updated at </th>
                 <th class="text-center no-sort no-search">Action</th>
             </thead>
         </table>
@@ -55,13 +55,23 @@
                         class: 'text-center'
                     },
                     {
+                        data: 'id',
+                        class: 'text-center'
+                    },
+                    {
                         data: 'type',
+                        class: 'text-center'
+                    },
+                    
+                    {
+                        data: 'direction',
                         class: 'text-center'
                     },
                     {
                         data: 'price',
                         class: 'text-center'
                     },
+                    
                     {
                         data: 'offer_quantity',
                         class: 'text-center'
@@ -81,14 +91,7 @@
                         class: 'text-center '
                     },
 
-                    {
-                        data: 'created_at',
-                        class: 'text-center '
-                    },
-                    {
-                        data: 'updated_at',
-                        class: 'text-center'
-                    },
+                    
                     {
                         data: 'action',
                         class: 'text-center '
@@ -96,7 +99,7 @@
 
                 ],
                 order: [
-                    [8, 'desc'],
+                    [7, 'desc'],
                 ],
                 responsive: {
                     details: {

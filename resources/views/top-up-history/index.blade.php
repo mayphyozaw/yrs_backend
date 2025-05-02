@@ -18,6 +18,7 @@
         <table class="table table-bordered Datatable-tb" id="images">
             <thead>
                 <th class="text-center"></th>
+                <th class="text-center">#</th>
                 <th class="text-center">Trx ID</th>
                 <th class="text-center">User</th>
                 <th class="text-center">Amount</th>
@@ -49,6 +50,10 @@
 
                 columns: [{
                         data: 'responsive-icon',
+                        class: 'text-center'
+                    },
+                    {
+                        data: 'id',
                         class: 'text-center'
                     },
                     {
@@ -88,7 +93,7 @@
 
                 ],
                 order: [
-                    [7, 'desc'],
+                    [8, 'desc'],
                 ],
                 responsive: {
                     details: {

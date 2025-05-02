@@ -17,6 +17,7 @@
         <table class="table table-bordered Datatable-tb">
             <thead>
                 <th class="text-center"></th>
+                <th class="text-center">#</th>
                 <th class="text-center">Ticket Number</th>
                 <th class="text-center">User</th>
                 <th class="text-center">Type</th>
@@ -47,6 +48,10 @@
 
                 columns: [{
                         data: 'responsive-icon',
+                        class: 'text-center'
+                    },
+                    {
+                        data: 'id',
                         class: 'text-center'
                     },
                     {
@@ -85,7 +90,7 @@
 
                 ],
                 order: [
-                    [6, 'desc'],
+                    [7, 'desc'],
                 ],
                 responsive: {
                     details: {
