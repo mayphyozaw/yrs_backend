@@ -1,8 +1,22 @@
 APIs
 From documentation, 
+
 We need Token, for auth Laravel, using the Laravel Passport Package in the past.
 
 1. for Token => Laravel Passport and Laravel Sanctum Package 
 
 Laravel Passport => API Token only
 Laravel Sanctum => without OAuth with default in composer.json
+
+login , register => OTP => access_token
+
+1. Api routes -> 3 types
+
+    1. routes=> api.php
+    2. routes => user-portal-api.php  
+    3. routes => ticket-inspector-portal-api.php
+
+2. Controllers => Api => 2 types folders
+
+    1. UserPortal => AuthController (including OTP send from Email, and from Phone nuber)
+    2. TicketInspectorPortal => 

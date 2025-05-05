@@ -72,3 +72,12 @@ recheck the Backend
     in TicketRepository => change the query to with 
         $model = $this->model::query();
 
+firstOfCreate() => [], []
+[] for condition
+[] for amount
+
+
+admin panel -> email verified => using laravel breeze from documentation
+
+format('%i minutes and %s seconds') => PHP Carbon default
+
