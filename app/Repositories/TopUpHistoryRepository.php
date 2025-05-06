@@ -43,6 +43,12 @@ class TopUpHistoryRepository implements BaseRepository
 
     
 
+    public function queryByUser($user)
+    {
+        return $this->model::where('user_id', $user->id);
+    }
+ 
+
     public function datatable(Request $request)
     {
         $model = $this->model::with(['user:id,name,email']);

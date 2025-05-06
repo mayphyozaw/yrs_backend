@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Api\UserPortal\AuthController;
 use App\Http\Controllers\Api\UserPortal\ProfileController;
+use App\Http\Controllers\Api\UserPortal\TopUpController;
+use App\Http\Controllers\Api\UserPortal\TopUpHistoryController;
 use App\Http\Controllers\Api\UserPortal\WalletTransactionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +21,14 @@ Route::middleware('auth:users_api')->group(function () {
     Route::get('/profile', [ProfileController::class, 'profile']);
     Route::post('change-password', [ProfileController::class, 'changePassword']);
     Route::post('logout',[AuthController::class, 'logout']);
+
+    //TopUp History
+    Route::get('top-up-history',[TopUpHistoryController::class, 'index']);
+    Route::get('top-up-history/{trx_id}',[TopUpHistoryController::class, 'show']);
+
+    //Top Up
+    Route::get('top-up',[TopUpController::class, 'store']);
+
 
     //Wallet Transaction
     Route::get('wallet-transaction',[WalletTransactionController::class, 'index']);

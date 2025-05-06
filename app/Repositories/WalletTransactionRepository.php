@@ -34,6 +34,12 @@ class WalletTransactionRepository implements BaseRepository
 
     public function delete($id) {}
 
+    
+    public function queryByUser($user)
+    {
+        return $this->model::where('user_id', $user->id);
+    }
+    
     public function datatable(Request $request)
     {
         $model = $this->model::with(['user:id,name,email']);
@@ -73,10 +79,7 @@ class WalletTransactionRepository implements BaseRepository
             ->toJson();
     }
 
-    public function queryByUser($user)
-    {
-        return $this->model::where('user_id', $user->id);
-    }
+   
  
     
 }
