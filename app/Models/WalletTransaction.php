@@ -51,22 +51,30 @@ class WalletTransaction extends Model
                 switch ($attributes['method']) {
                     case 'add':
                         $text = 'Add';
+                        $sign = '+';
                         $color = '16a34a';
+                        
                         break;
 
                     case 'reduce':
                         $text = 'Reduce';
+                        $sign = '-';
                         $color = 'dc2626';
+                        
                         break;
                         
                     default:
                         $text = '';
+                        $sign = '';
                         $color = '4b45563';
+                        
                         break;
                 }
                 return[
                     'text' => $text,
-                    'color'=> $color
+                    'sign' => $sign,
+                    'color'=> $color,
+                    
                 ];
             },
             
@@ -80,27 +88,32 @@ class WalletTransaction extends Model
                 switch ($attributes['type']) {
                     case 'manual':
                         $text = 'Manual';
-                        $color = 'ea580c';
+                        $color = '16a34a';
+                        $icon = asset('image/transaction.png');
                         break;
 
                     case 'top_up':
                         $text = 'Top up';
                         $color = '2563eb';
+                        $icon = asset('image/topup.png');
                         break;
 
                     case 'buy_ticket':
                         $text = 'Buy Ticket';
                         $color = '059669';
+                        $icon = asset('image/biy-ticket.png');
                         break;
                         
                     default:
                         $text = '';
                         $color = '4b45563';
+                        $icon = asset('image/transaction.png');
                         break;
                 }
                 return[
                     'text' => $text,
-                    'color'=> $color
+                    'color'=> $color,
+                    'icon' => $icon,
                 ];
             },
             
@@ -113,7 +126,7 @@ class WalletTransaction extends Model
             get: function (mixed $value, array $attributes){
                 switch ($attributes['method']) {
                     case 'add':
-                        $from = $this->acsrType['text'] .($this->sourceable ? '(#'.$this->sourceable->id. ')' : '');
+                        $from = $this->acsrType['text'];
                         break;
 
                     case 'reduce':
@@ -154,4 +167,6 @@ class WalletTransaction extends Model
             
         );
     }
+
+    
 }

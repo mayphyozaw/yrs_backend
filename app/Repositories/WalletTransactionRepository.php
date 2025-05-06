@@ -40,8 +40,8 @@ class WalletTransactionRepository implements BaseRepository
 
         return DataTables::eloquent($model)
             ->filterColumn('user_name', function ($query, $keyword) {
-                $query->whereHas('user', function($q1) use ($keyword){
-                    $q1->where('name', 'LIKE', "%$keyword%")->orWhere('email','LIKE',"%$keyword%");
+                $query->whereHas('user', function ($q1) use ($keyword) {
+                    $q1->where('name', 'LIKE', "%$keyword%")->orWhere('email', 'LIKE', "%$keyword%");
                 });
             })
             ->addColumn('user_name', function ($wallet_transaction) {
@@ -72,4 +72,11 @@ class WalletTransactionRepository implements BaseRepository
             ->rawColumns(['method', 'type'])
             ->toJson();
     }
+
+    public function queryByUser($user)
+    {
+        return $this->model::where('user_id', $user->id);
+    }
+ 
+    
 }
