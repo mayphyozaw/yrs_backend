@@ -40,4 +40,19 @@ class StationController extends Controller
 
         return ResponseService::success(new StationDetailResource($station));
     }
+
+
+    public function byRegion(Request $request)
+    {
+        $stations = $this->stationRepository->query()
+            ->whereBetween('latitude',[$request->south_west_latitude, $request->noth_east_latitude])
+            ->whereBetween('latitude',[$request->south_west_latitude, $request->noth_east_latitude])
+            ->take(20)
+            ->get();
+
+            return StationResource::collection($stations)->additional(['message' => 'success']);
+
+    }
 }
+
+

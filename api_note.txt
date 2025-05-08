@@ -20,3 +20,10 @@ login , register => OTP => access_token
 
     1. UserPortal => AuthController (including OTP send from Email, and from Phone nuber)
     2. TicketInspectorPortal => 
+
+
+
+
+highest latitude and highest longitude => North East
+
+Lowest Latitude and Lowest longitude => South West
