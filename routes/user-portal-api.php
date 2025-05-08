@@ -17,7 +17,7 @@ Route::post('resend-otp',[AuthController::class,'resendOTP']);
 
 
 
-Route::middleware('auth:users_api')->group(function () {
+Route::middleware(['auth:users_api', 'verified'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'profile']);
     Route::post('change-password', [ProfileController::class, 'changePassword']);
     Route::post('logout',[AuthController::class, 'logout']);
@@ -27,7 +27,7 @@ Route::middleware('auth:users_api')->group(function () {
     Route::get('top-up-history/{trx_id}',[TopUpHistoryController::class, 'show']);
 
     //Top Up
-    Route::get('top-up',[TopUpController::class, 'store']);
+    Route::post('top-up',[TopUpController::class, 'store']);
 
 
     //Wallet Transaction

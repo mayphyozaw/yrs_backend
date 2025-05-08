@@ -16,7 +16,7 @@ class WalletService
         
         // Wallet Transaction
         (new WalletTransactionRepository())->create([
-            'trx_id' => Str::random(10),
+            'trx_id' => Str::random(12),
             'wallet_id' => $wallet->id,
             'user_id' => $wallet->user_id,
             'sourceable_id' => $data['sourceable_id'],
@@ -37,7 +37,7 @@ class WalletService
 
         // Wallet Transaction
         (new WalletTransactionRepository())->create([
-            'trx_id' => Str::random(10),
+            'trx_id' => Str::random(12),
             'wallet_id' => $wallet->id,
             'user_id' => $wallet->user_id,
             'sourceable_id' => $data['sourceable_id'],

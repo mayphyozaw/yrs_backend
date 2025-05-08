@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\StationController;
 use App\Http\Controllers\Api\UserPortal\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -14,3 +15,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+
+//Station
+Route::get('station',[StationController::class, 'index']);
+Route::get('station/{slug}',[StationController::class, 'show']); 

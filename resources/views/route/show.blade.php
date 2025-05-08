@@ -75,7 +75,7 @@
             // L.tileLayer('https://api.maptiler.com/maps/streets-v2/{z}/{x}/{y}.png?key=IwRNyovMKfErhzgK8z93').addTo(map);
 
             var myIcon = L.icon({
-                iconUrl: "{{asset('image/station.png')}}",
+                iconUrl: "{{asset('image/station-marker.png')}}",
                 iconSize: [32, 32],
                 iconAnchor: [16, 32],
                 popupAnchor: [0, -32],
