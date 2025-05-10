@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\RouteController;
 use App\Http\Controllers\Api\StationController;
 use App\Http\Controllers\Api\UserPortal\AuthController;
 use Illuminate\Http\Request;
@@ -20,3 +21,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('station',[StationController::class, 'index']);
 Route::get('station/{slug}',[StationController::class, 'show']); 
 Route::get('station-by-region',[StationController::class, 'byRegion']); 
+
+
+//Route
+Route::get('route',[RouteController::class, 'index']);
+Route::get('route/{slug}',[RouteController::class, 'show']); 
