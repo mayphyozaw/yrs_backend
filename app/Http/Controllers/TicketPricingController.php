@@ -54,10 +54,9 @@ class TicketPricingController extends Controller
                 'offer_quantity' => $request->offer_quantity,
                 'remain_quantity' => $request->offer_quantity,
                 'started_at'=> $period[0],
-                'endeded_at'=> $period[1],
+                'ended_at'=> $period[1],
                
             ]);
-            
 
             return Redirect::route('ticket-pricing.index')->with('success', 'Successfully created');
         } catch (Exception $e) {
@@ -90,7 +89,7 @@ class TicketPricingController extends Controller
                 'offer_quantity' => $new_offer_quantity,
                 'remain_quantity' => $new_remain_quantity,
                 'started_at'=> $period[0],
-                'endeded_at'=> $period[1],
+                'ended_at'=> $period[1],
                
             ]);
 

@@ -44,6 +44,10 @@ class TicketPricingRepository implements BaseRepository
         $record->delete();
     }
 
+    public function queryBYDateTime($date_time)
+    {
+        return $this->model::where('started_at', '<=', $date_time)->where('ended_at', '>=' , $date_time);
+    }
 
     public function datatable(Request $request)
     {
@@ -66,10 +70,10 @@ class TicketPricingRepository implements BaseRepository
                 return number_format($ticket_pricing->remain_quantity);
             })
             ->editColumn('started_at', function ($ticket_pricing) {
-                return Carbon::parse($ticket_pricing->created_at)->format("Y-m-d H:i:s");
+                return Carbon::parse($ticket_pricing->started_at)->format("Y-m-d H:i:s");
             })
             ->editColumn('ended_at', function ($ticket_pricing) {
-                return Carbon::parse($ticket_pricing->updated_at)->format("Y-m-d H:i:s");
+                return Carbon::parse($ticket_pricing->ended_at)->format("Y-m-d H:i:s");
             })
            
             ->addColumn('action', function ($ticket_pricing) {
