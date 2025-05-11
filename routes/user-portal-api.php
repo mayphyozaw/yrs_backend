@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\UserPortal\AuthController;
 use App\Http\Controllers\Api\UserPortal\ProfileController;
+use App\Http\Controllers\Api\UserPortal\TicketController;
 use App\Http\Controllers\Api\UserPortal\TopUpController;
 use App\Http\Controllers\Api\UserPortal\TopUpHistoryController;
 use App\Http\Controllers\Api\UserPortal\WalletTransactionController;
@@ -21,6 +22,11 @@ Route::middleware(['auth:users_api', 'verified'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'profile']);
     Route::post('change-password', [ProfileController::class, 'changePassword']);
     Route::post('logout',[AuthController::class, 'logout']);
+
+
+    //Ticket
+    Route::get('ticket',[TicketController::class, 'index']);
+    Route::get('ticket/{ticket_number}',[TicketController::class, 'show']);
 
     //TopUp History
     Route::get('top-up-history',[TopUpHistoryController::class, 'index']);
