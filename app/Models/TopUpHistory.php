@@ -76,6 +76,7 @@ class TopUpHistory extends Model
         return Attribute::make(
             get: function (mixed $value, array $attributes){
                 return Storage::url('top-up-history/'. $attributes['image']);
+                
             },
         );
     }

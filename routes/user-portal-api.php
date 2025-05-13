@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\UserPortal\AuthController;
+use App\Http\Controllers\Api\UserPortal\BuyTicketController;
 use App\Http\Controllers\Api\UserPortal\ProfileController;
 use App\Http\Controllers\Api\UserPortal\TicketController;
 use App\Http\Controllers\Api\UserPortal\TicketPricingController;
@@ -26,6 +27,10 @@ Route::middleware(['auth:users_api', 'verified'])->group(function () {
 
     //Ticket Pricing
     Route::get('ticket-pricing',[TicketPricingController::class, 'index']);
+
+    // Buy Ticket
+    Route::post('buy-ticket',[BuyTicketController::class, 'store']);
+
     //Ticket
     Route::get('ticket',[TicketController::class, 'index']);
     Route::get('ticket/{ticket_number}',[TicketController::class, 'show']);

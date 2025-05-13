@@ -32,9 +32,11 @@ class TopUpController extends Controller
 
         DB::beginTransaction();
         try {
+           
             $user = Auth::guard('users_api')->user();
-            $wallet = $user->wallet();
-
+            $wallet = $user->wallet;
+            
+            
             if (!$wallet) {
                 throw new Exception('The given data is invalid.');
             }

@@ -53,8 +53,7 @@ class TicketRepository implements BaseRepository
 
     public function datatable(Request $request)
     {
-        $model = $this->model::with(['user:id, name, email']);
-
+        $model = $this->model::query();
         return DataTables::eloquent($model)
             ->filterColumn('user_name', function ($query, $keyword) {
                 $query->whereHas('user', function ($q1) use ($keyword) {
@@ -73,11 +72,11 @@ class TicketRepository implements BaseRepository
             ->editColumn('price', function ($ticket) {
                 return number_format($ticket->price);
             })
-            ->editColumn('created_at', function ($ticket) {
-                return Carbon::parse($ticket->created_at)->format("Y-m-d H:i:s");
+            ->editColumn('valid_at', function ($ticket) {
+                return Carbon::parse($ticket->valid_at)->format("Y-m-d H:i:s");
             })
-            ->editColumn('updated_at', function ($ticket) {
-                return Carbon::parse($ticket->updated_at)->format("Y-m-d H:i:s");
+            ->editColumn('expire_at', function ($ticket) {
+                return Carbon::parse($ticket->expire_at)->format("Y-m-d H:i:s");
             })
             ->addColumn('action', function ($ticket) {
                 return view('ticket._action', compact('ticket'));
