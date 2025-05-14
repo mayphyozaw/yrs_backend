@@ -35,6 +35,9 @@ Route::middleware(['auth:users_api', 'verified'])->group(function () {
     Route::get('ticket',[TicketController::class, 'index']);
     Route::get('ticket/{ticket_number}',[TicketController::class, 'show']);
 
+    Route::post('regenerate-qr',[TicketController::class,'regenerateQR']);
+
+
     //TopUp History
     Route::get('top-up-history',[TopUpHistoryController::class, 'index']);
     Route::get('top-up-history/{trx_id}',[TopUpHistoryController::class, 'show']);

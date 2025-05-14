@@ -1,9 +1,9 @@
-1. admin-users TABLE [id, name, email] 
+1. TABLE Name => {admin-users}  [id, name, email] 
         id                  -> bitint
         name                -> varchar
         email               -> varchar
 
-2. ticket-inspectors TABLE [id, name, email]
+2. TABLE Name => {ticket-inspectors}  [id, name, email]
         id                  -> bitint
         name                -> varchar
         email               -> varchar
@@ -11,18 +11,18 @@
 
 ...................................................................................
 
-3. users TABLE [id, name, email] ======= user_id <=> id
+3. TABLE Name => {users}  [id, name, email] ======= user_id <=> id
         id                  -> bitint
         name                -> varchar
         email               -> varchar
 
-4. wallets TABLE [id, user_id, amount] => wallet_id <=>id
+4. TABLE Name => {wallets}  [id, user_id, amount] => wallet_id <=>id
         id                    -> bitint
         user_id               -> bitint
         amount                -> bitint
 
 
-5. wallet-transactions TABLE [id, trx_id, wallet_id, user_id, sourceable_id, sourceable_type, type, method, amount, description]
+5. TABLE Name => {wallet-transactions}  [id, trx_id, wallet_id, user_id, sourceable_id, sourceable_type, type, method, amount, description]
         id                    -> bitint
         trx_id                -> bitint
         wallet_id             -> bitint
@@ -47,7 +47,7 @@ accessor => get method
 add and reduce for text color => using accessor 
 
 
-6. topup_history TABLE [id, trx_id, wallet_id, user_id, amount, description, image, status, approved_at, rejected_at]
+6. TABLE Name => {topup_history}  [id, trx_id, wallet_id, user_id, amount, description, image, status, approved_at, rejected_at]
         id                    -> bitint
         trx_id                -> bitint
         wallet_id             -> bitint
@@ -62,7 +62,7 @@ add and reduce for text color => using accessor
 ...................................................................................
 
 
-7. stations TABLE [id, title, description, latitude, logitude]
+7. TABLE Name => {stations}  [id, title, description, latitude, logitude]
         id                    -> bitint
         slug                  -> varchar
         title                 -> varchar
@@ -71,7 +71,7 @@ add and reduce for text color => using accessor
         logitude              -> varchar
 
 
-8. routes TABLE [id, title, description, direction]
+8. TABLE Name => {routes}  [id, title, description, direction]
         id                    -> bitint
         slug                  -> varchar
         title                 -> varchar
@@ -79,7 +79,7 @@ add and reduce for text color => using accessor
         direction             -> enum (clockwise, anticlockwise)
 
 
-9. route_stations TABLE [id, route_id, station_id, time]
+9. TABLE Name => {route_stations}  [id, route_id, station_id, time]
         id                    -> bitint
         route_id              -> bitint
         station_id            -> bitint
@@ -88,7 +88,7 @@ add and reduce for text color => using accessor
 
 ...................................................................................
 
-10. ticket_pricings TABLE [id, type, price, direction,  offer_quantity, remain_quantity, started_at, ended_at]
+10. TABLE Name => {ticket_pricings}  [id, type, price, direction,  offer_quantity, remain_quantity, started_at, ended_at]
         id                    -> bitint
         type                  -> enum [one-time ticket, one-month ticket]
         direction             ->
@@ -100,7 +100,7 @@ add and reduce for text color => using accessor
 
 .........................................................................................
 
-11. tickets TABLE [id, ticket_number, user_id, ticket_pricing_id, price, type, direction, valid_at, expire_at]
+11. TABLE Name => {tickets}  [id, ticket_number, user_id, ticket_pricing_id, price, type, direction, valid_at, expire_at]
         id                    -> bitint
         ticket_number         -> varchar
         user_id               ->  int
@@ -120,11 +120,19 @@ one_time_ticket => direction => clockwise or anticlockwise
 
  .......................................................................
 
- 12. For API => 
-        otp TABLE [id, email, code, token, expire_at]
+
+12. TABLE Name => {otp}  [id, email, code, token, expire_at]
 
         id                    -> bitint
         email                 -> varchar
         code                  -> varchar
         token                 -> varchar
         expired_at             -> timestamp
+
+13. TABLE Name => {qr}  [id, ticket_number, token, expire_at]
+
+        id                    -> bitint
+        ticket_number         -> varchar
+        token                 -> varchar
+        expired_at             -> timestamp
+
