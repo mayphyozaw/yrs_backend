@@ -110,7 +110,7 @@ class OTPRepository implements BaseRepository
         }
 
         if ($otp->code != $code) {
-            throw new Exception('The OTP is worng.');
+            throw new Exception('The OTP is wrong.');
         }
 
         $this->delete($otp->id);
