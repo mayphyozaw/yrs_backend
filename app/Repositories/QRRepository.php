@@ -94,27 +94,5 @@ class QRRepository implements BaseRepository
     }
 
 
-    public function verify($otp_token, $code)
-    {
-        $otp = $this->model::where('token', $otp_token)->first();
-
-        if (!$otp) {
-            throw new Exception('The given data is invalid.');
-        }
-
-        if ($otp->expired_at < date("Y-m-d H:i:s")) {
-            throw new Exception('The OTP is expired.');
-        }
-
-        if ($otp->code != $code) {
-            throw new Exception('The OTP is wrong.');
-        }
-
-        $this->delete($otp->id);
-
-    }
-
-
-
     
 }

@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Api\TicketInspectorPortal\AuthController ;
 use App\Http\Controllers\Api\TicketInspectorPortal\ProfileController;
+use App\Http\Controllers\Api\TicketInspectorPortal\TicketInspectionController;
+use App\Http\Controllers\Api\UserPortal\TicketController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,4 +25,7 @@ Route::middleware(['auth:ticket_inspectors_api', 'verified'])->group(function ()
     Route::get('profile', [ProfileController::class, 'profile']);
     Route::post('change-password', [ProfileController::class, 'changePassword']);
     Route::post('logout',[AuthController::class, 'logout']);
+
+    Route::get('ticket-inspection',[TicketInspectionController::class, 'index']);
+    Route::post('ticket-inspection',[TicketInspectionController::class, 'store']);
 });

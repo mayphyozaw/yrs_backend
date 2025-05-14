@@ -118,6 +118,22 @@ one_time_ticket => direction => clockwise or anticlockwise
 
  one_month_ticket => clockwise and anticlockwise => both
 
+13. TABLE Name => {qr}  [id, ticket_number, token, expire_at]
+
+        id                    -> bitint
+        ticket_number         -> varchar
+        token                 -> varchar
+        expired_at             -> timestamp
+
+14. TABLE Name => {ticket_inspections}  [id, ticket_id, ticket_inspector_id, route_id]
+
+        id                    -> bitint
+        ticket_id             -> bitint
+        ticket_inspector_id   -> bitint           
+        route_id              -> bitint
+
+
+
  .......................................................................
 
 
@@ -129,10 +145,5 @@ one_time_ticket => direction => clockwise or anticlockwise
         token                 -> varchar
         expired_at             -> timestamp
 
-13. TABLE Name => {qr}  [id, ticket_number, token, expire_at]
 
-        id                    -> bitint
-        ticket_number         -> varchar
-        token                 -> varchar
-        expired_at             -> timestamp
 
