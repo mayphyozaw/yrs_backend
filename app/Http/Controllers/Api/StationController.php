@@ -22,7 +22,7 @@ class StationController extends Controller
     {
         $stations = $this->stationRepository->query()
             ->when($request->search, function ($q1) use ($request) {
-                $q1->where('tile', 'LIKE', "%$request->search%")
+                $q1->where('title', 'LIKE', "%$request->search%")
                     ->orWhere('description', 'LIKE', "%$request->search%");
                    
             })

@@ -25,7 +25,7 @@ class RouteController extends Controller
         $routes = $this->routeRepository->query()
             ->with('stations')
             ->when($request->search, function ($q1) use ($request) {
-                $q1->where('tile', 'LIKE', "%$request->search%");
+                $q1->where('title', 'LIKE', "%$request->search%");
             })
             ->when($request->origin_station_slug && $request->destination_station_slug, function ($q1) use ($request) {
                 $origin_station = Station::where('slug', $request->origin_station_slug)->firstOrFail();
