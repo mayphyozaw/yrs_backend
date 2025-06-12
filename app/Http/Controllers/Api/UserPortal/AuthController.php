@@ -21,7 +21,7 @@ class AuthController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:500',
-            'email' => 'required|unique:users,email',
+            'email' => 'required|email|unique:users',
             'password' => 'required|string|min:8|max:20',
         ]);
 
@@ -43,19 +43,20 @@ class AuthController extends Controller
             );
 
 
-            if ($user->email_verified_at) {
+            // if ($user->email_verified_at) {
                     $response = [
-                        'is_verified' => 1,
+                        // 'is_verified' => 1,
                         'access_token' => $user->createToken(config('app.name'))->plainTextToken
                     ];
                     
-                }else{
-                    $otp = (new OTPRepository())->send($request->email);
-                    $response = [
-                        'is_verified' => 0,
-                        'otp_token' => $otp->token,
-                    ];
-                }
+                // // }
+                // // else{
+                // //     $otp = (new OTPRepository())->send($request->email);
+                // //     $response = [
+                // //         'is_verified' => 0,
+                // //         'otp_token' => $otp->token,
+                // //     ];
+                // }
             DB::commit();
             return ResponseService::success($response,'Successfully registered');
         } catch (Exception $e) {

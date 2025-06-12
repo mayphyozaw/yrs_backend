@@ -54,7 +54,6 @@ class WalletTransactionRepository implements BaseRepository
                 return ($wallet_transaction->user->name ?? '-') . '(' . ($wallet_transaction->user->email ?? '') . ')';
             })
             ->editColumn('method', function ($wallet_transaction) {
-                // return $wallet_transaction->acsrMethod['text'];
                 return '<span style="color: #' . $wallet_transaction->acsrMethod['color'] . '">' . $wallet_transaction->acsrMethod['text'] . '</span>';
             })
             ->editColumn('type', function ($wallet_transaction) {

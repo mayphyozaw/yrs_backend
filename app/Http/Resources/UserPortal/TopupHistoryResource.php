@@ -20,7 +20,7 @@ class TopupHistoryResource extends JsonResource
             'amount' => number_format($this->amount) . ' MMK',
             'status' => $this->acsrStatus,
             'created_at' => Carbon::parse($this->created_at)->format('Y-m-d H:i:s'),
-            'icon' => asset('image/top-up.png'),
+            'icon' => asset('image/topup.png'),
         ];
     }
 }

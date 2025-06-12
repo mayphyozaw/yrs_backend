@@ -38,7 +38,7 @@
                 <x-text-input id="password" name="password" type="password" class="tw-mt-1 tw-block tw-w-full" />
             </div>
     
-            <div class="tw-flex tw-items-center tw-justify-center tw-items-center ">
+            <div class="tw-flex tw-items-center tw-justify-center">
                 <x-cancel-button class="tw-mr-2" href="{{ route('user.index') }}">Cancel</x-cancel-button>
                 <x-confirm-button>Confirm</x-confirm-button>
             </div>

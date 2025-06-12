@@ -58,6 +58,7 @@ class OTPRepository implements BaseRepository
                 'expired_at' => now()->addMinutes(5)->format('Y-m-d H:i:s')
 
             ]);
+            
 
             if (config('app.env') == 'production') {
                 Notification::route('mail', $email)->notify(new TwoStepVerification($otp));

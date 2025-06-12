@@ -101,7 +101,7 @@ class WalletTransaction extends Model
                     case 'buy_ticket':
                         $text = 'Buy Ticket';
                         $color = '059669';
-                        $icon = asset('image/biy-ticket.png');
+                        $icon = asset('image/buy-ticket.png');
                         break;
                         
                     default:
@@ -154,7 +154,8 @@ class WalletTransaction extends Model
                         break;
 
                     case 'reduce':
-                        $to = $this->acsrType['text'] .($this->sourceable ? '(#'.$this->sourceable->id. ')' : '');
+                        // $to = $this->acsrType['text'] .($this->sourceable ? '(#'.$this->sourceable->id. ')' : '');
+                        $to = $this->acsrType['text'];
                         break;
 
                     
